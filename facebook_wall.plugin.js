@@ -1,9 +1,6 @@
 jQuery.fn.facebook_wall = function(options) {
-  if(!options.id) {
-		alert('You need to provide an user/page id!');
-	}
-	if(!options.access_token) {
-		alert('You need to provide an access token!');
+	if(!options.id || !options.access_token) {
+		break;
 	}
 
 	options = jQuery.extend({
