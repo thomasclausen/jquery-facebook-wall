@@ -4,7 +4,6 @@ jQuery.fn.facebook_wall = function(options) {
 	}
 
 	options = jQuery.extend({
-		graph_url: 'https://graph.facebook.com/',
 		id: '',
 		access_token: '',
 		limit: 15, // You can also pass a custom limit as a parameter.
@@ -12,7 +11,8 @@ jQuery.fn.facebook_wall = function(options) {
 		show_comments: true // true | false
 	}, options);
 
-	var graphPOSTS = options.graph_url + options.id + '/feed/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=da_DK&date_format=U';
+	var graphURL = 'https://graph.facebook.com/';
+	var graphPOSTS = graphURL + options.id + '/feed/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=da_DK&date_format=U';
 	var e = jQuery(this);
 
 	e.addClass('loading');
@@ -30,7 +30,7 @@ jQuery.fn.facebook_wall = function(options) {
 				post_class = 'type-video ';
 			}
 			output += '<li class="' + post_class + 'avatar-size-' + options.avatar_size + ' clearfix">';
-				output += '<a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (options.graph_url + this.from.id + '/picture?type=' + options.avatar_size) + '" class="avatar" alt="' + this.from.name + '" /></a>';
+				output += '<a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" class="avatar" alt="' + this.from.name + '" /></a>';
 
 				output += '<div class="message-from"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
 				if (this.message != null || this.message != undefined) {
@@ -85,7 +85,7 @@ jQuery.fn.facebook_wall = function(options) {
 							output += '<ul class="comment-list">';
 								for (var c = 0; c < this.comments.data.length; c++) {
 									output += '<li class="comment">';
-										output += '<a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (options.graph_url + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" class="comment-avatar" alt="' + this.comments.data[c].from.name + '" /></a>';
+										output += '<a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" class="comment-avatar" alt="' + this.comments.data[c].from.name + '" /></a>';
 										output += '<div class="comment-from"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
 										output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
 										output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
