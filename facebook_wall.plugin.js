@@ -67,7 +67,7 @@ jQuery.fn.facebook_wall = function(options) {
 					output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
 					if (this.likes != null || this.likes != undefined) {
 						output += '<span class="likes">';
-							output += this.likes.count + ' synes godt om';
+							output += this.likes.count + ' personer synes godt om';
 							if (this.likes.count >= 1 && this.likes.count <= 4) {
 									output += '<ul class="like-list">';
 									for (var l = 0; l < this.likes.data.length; l++) {
