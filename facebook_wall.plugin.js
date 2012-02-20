@@ -8,7 +8,8 @@ jQuery.fn.facebook_wall = function(options) {
 		id: '',
 		access_token: '',
 		limit: 15, // You can also pass a custom limit as a parameter.
-		avatar_size: 'square' // square | small | normal | large
+		avatar_size: 'square', // square | small | normal | large
+		show_comments: true // true | false
 	}, options);
 
 	var graphPOSTS = options.graph_url + options.id + '/feed/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=da_DK&date_format=U';
@@ -66,7 +67,7 @@ jQuery.fn.facebook_wall = function(options) {
 					output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
 					if (this.likes != null || this.likes != undefined) {
 						output += '<span class="likes">';
-							output += this.likes.count + ' Synes godt om';
+							output += this.likes.count + ' synes godt om';
 							if (this.likes.count >= 1 && this.likes.count <= 4) {
 									output += '<ul class="like-list">';
 									for (var l = 0; l < this.likes.data.length; l++) {
@@ -79,8 +80,8 @@ jQuery.fn.facebook_wall = function(options) {
 						output += '</span>';
 					}
 					output += '<span class="comments">';
-						output += this.comments.count + ' Kommentarer';
-						if (this.comments.count >= 1) {
+						output += this.comments.count + ' kommentarer';
+						if (this.comments.count >= 1 && options.show_comments == true) {
 							output += '<ul class="comment-list">';
 								for (var c = 0; c < this.comments.data.length; c++) {
 									output += '<li class="comment">';
