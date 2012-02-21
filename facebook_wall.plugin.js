@@ -1,6 +1,6 @@
 jQuery.fn.facebook_wall = function(options) {
 	if(!options.id || !options.access_token) {
-		break;
+		return;
 	}
 
 	options = jQuery.extend({
