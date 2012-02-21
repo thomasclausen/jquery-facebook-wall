@@ -49,18 +49,20 @@ jQuery.fn.facebook_wall = function(options) {
 				}
 				
 				if (this.type == 'link' || this.type == 'photo' || this.type == 'video') {
-					if (this.picture == null || this.picture == undefined) {
+					if ((this.picture == null || this.picture == undefined) && (this.object_id == null || this.object_id == undefined)) {
 						media_class = ' border-left';
 					} else {
 						media_class = '';
 					}
-					output += '<div class="media' + media_class + '">';
+					output += '<div class="media' + media_class + ' clearfix">';
 						if (this.picture != null || this.picture != undefined) {
 							output += '<a href="' + this.link + '"><img src="' + this.picture + '" /></a>';
+						} else if (this.object_id != null || this.object_id != undefined) {
+							output += '<a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a>';
 						}
-						output += '<div class="meta">';
+						output += '<div class="media-meta">';
 						if (this.name != null || this.name != undefined) {
-							output += '<a href="' + this.link + '">' + this.name + '</a><br />';
+							output += '<div class="name"><a href="' + this.link + '">' + this.name + '</a></div>';
 						}
 						if (this.caption != null || this.caption != undefined) {
 							output += '<div class="caption">' + modText(this.caption) + '</div>';
@@ -75,35 +77,38 @@ jQuery.fn.facebook_wall = function(options) {
 				output += '<div class="post-meta">';
 					output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
 					if (this.likes != null || this.likes != undefined) {
-						output += '<span class="likes">';
-							output += this.likes.count + ' synes godt om';
-							if (this.likes.count >= 1 && this.likes.count <= 4) {
-									output += '<ul class="like-list">';
-									for (var l = 0; l < this.likes.data.length; l++) {
-										output += '<li class="like">';
-											output += '<div class="like-from"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a></div>';
-										output += '</li>';
-									}
-								output += '</ul>';
-							}
-						output += '</span>';
+						output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
+					} else {
+						output += '<span class="seperator">&middot;</span><span class="likes">0 synes godt om</span>';
 					}
-					output += '<span class="comments">';
-						output += this.comments.count + ' kommentarer';
-						if (this.comments.count >= 1 && options.show_comments == true) {
-							output += '<ul class="comment-list">';
-								for (var c = 0; c < this.comments.data.length; c++) {
-									output += '<li class="comment">';
-										output += '<a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" class="comment-avatar" alt="' + this.comments.data[c].from.name + '" /></a>';
-										output += '<div class="comment-from"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
-										output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
-										output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
-									output += '</li>';
-								}
-							output += '</ul>';
-						}
-					output += '</span>';
+					output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentarer</span>';
+					split_id = this.id.split('_');
+					output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Tilf&oslash;j kommentar</a></span></div>';
 				output += '</div>';
+
+				if (this.likes != null || this.likes != undefined) {
+					if (this.likes.count >= 1 && this.likes.count <= 4) {
+							output += '<ul class="like-list">';
+							for (var l = 0; l < this.likes.data.length; l++) {
+								output += '<li class="like">';
+									output += '<div class="like-from"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a></div>';
+								output += '</li>';
+							}
+						output += '</ul>';
+					}
+				}
+				if (this.comments.count >= 1 && options.show_comments == true) {
+					output += '<ul class="comment-list">';
+						for (var c = 0; c < this.comments.data.length; c++) {
+							output += '<li class="comment">';
+								output += '<a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.comments.data[c].from.name + '" /></a>';
+								output += '<div class="comment-from"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
+								output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
+								output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
+							output += '</li>';
+						}
+					output += '</ul>';
+				}
 
 			output += '</li>';
 
