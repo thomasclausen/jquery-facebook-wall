@@ -51,7 +51,7 @@ sub { top: 0.4em; }
 #facebook_wall li .post-meta .actionlinks .comment { }
 
 #facebook_wall li ul.like-list { display: none; }
-#facebook_wall li ul.like-list li.like { padding: 0; }
+#facebook_wall li ul.like-list li.like { }
 #facebook_wall li ul.like-list li.like .like-from { }
 
 #facebook_wall li ul.comment-list { margin-top: 10px; }
