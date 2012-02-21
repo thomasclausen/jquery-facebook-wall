@@ -8,6 +8,7 @@ jQuery.fn.facebook_wall = function(options) {
 		access_token: '',
 		limit: 15, // You can also pass a custom limit as a parameter.
 		avatar_size: 'square', // square | small | normal | large
+		message_length: 200,
 		show_comments: true // true | false
 	}, options);
 
@@ -34,9 +35,17 @@ jQuery.fn.facebook_wall = function(options) {
 
 				output += '<div class="message-from"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
 				if (this.message != null || this.message != undefined) {
-					output += '<div class="message">' + modText(this.message) + '</div>';
+					if (this.message.length > options.message_length) {
+						output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
+					} else
+						output += '<div class="message">' + modText(this.message) + '</div>';
+					}
 				} else if (this.story != null || this.story != undefined) {
-					output += '<div class="story">' + modText(this.story) + '</div>';
+					if (this.story.length > options.message_length) {
+						output += '<div class="story">' + modText(this.story.substring(0, options.message_length)) + '...</div>';
+					} else
+						output += '<div class="story">' + modText(this.story) + '</div>';
+					}
 				}
 				
 				if (this.type == 'link' || this.type == 'photo' || this.type == 'video') {
