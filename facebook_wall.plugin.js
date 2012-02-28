@@ -22,7 +22,6 @@
 		$.getJSON(graphPOSTS, function(posts) {
 			var output = '';
 			
-			output += '<ul>';
 			$.each(posts.data, function() {
 				if (this.type == 'link') {
 					post_class = 'type-link ';
@@ -115,7 +114,6 @@
 				
 				output += '</li>';
 			});
-			output += '</ul>';
 			
 			e.append(output);
 		}).complete(function() {
