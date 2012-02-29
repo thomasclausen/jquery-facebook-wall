@@ -115,7 +115,7 @@
 				output += '</li>';
 			});
 			
-			e.append(output);
+			e.prepend(output);
 		}).complete(function() {
 			e.removeClass('loading');
 		});
