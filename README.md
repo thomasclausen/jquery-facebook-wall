@@ -27,10 +27,11 @@ options:
     id: '' - insert your profile og fanpage id
     access_token: '' - insert your acces token
     limit: 10 - any amount from 1-15
-    locale: 'da_DK' - 
+    locale: 'da_DK' - your contry code
     date_format: 'U' - 
     avatar_size: 'square' - choices: 'square', 'small', 'normal' or 'large'
     message_length: 200 - the length of the message
+    show_guestentries: true - choices: 'true' or 'false'
     show_comments: true - choices: 'true' or 'false'
 
 # Get your fanpage id
