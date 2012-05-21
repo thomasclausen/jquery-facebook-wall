@@ -8,15 +8,20 @@
 			id: '',
 			access_token: '',
 			limit: 15, // You can also pass a custom limit as a parameter.
-			locale: 'da_DK',
+			locale: 'da_DK', // your contry code
 			date_format: 'U',
 			avatar_size: 'square', // square | small | normal | large
 			message_length: 200,
+			show_guestentries: true, // true | false
 			show_comments: true // true | false
 		}, options);
 	
 		var graphURL = 'https://graph.facebook.com/';
-		var graphPOSTS = graphURL + options.id + '/feed/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
+		if (options.show_guestentries == true) {
+			var graphPOSTS = graphURL + options.id + '/feed/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
+		} else {
+			var graphPOSTS = graphURL + options.id + '/posts/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
+		}
 		var e = $(this);
 		
 		e.addClass('loading');
