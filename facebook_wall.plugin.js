@@ -18,10 +18,11 @@
 	
 		var graphURL = 'https://graph.facebook.com/';
 		if (options.show_guestentries == true) {
-			var graphPOSTS = graphURL + options.id + '/feed/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
+			var graphTYPE = 'feed';
 		} else {
-			var graphPOSTS = graphURL + options.id + '/posts/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
+			var graphTYPE = 'posts';
 		}
+		var graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
 		var e = $(this);
 		
 		e.addClass('loading');
