@@ -26,6 +26,7 @@ options:
 
     id: '' - insert your profile og fanpage id
     access_token: '' - insert your acces token
+    type: feed | posts | events - will eventually support more of these posibilities: http://developers.facebook.com/docs/reference/api/
     limit: 10 - any amount from 1-15
     locale: 'da_DK' - your contry code
     date_format: 'U' - 
