@@ -35,6 +35,11 @@ options:
     show_guestentries: true - choices: 'true' or 'false'
     show_comments: true - choices: 'true' or 'false'
 
+For the "type" parameter you have the following options:
+"feed" - displays all your public entries - including guest entries
+"posts" - displays only your own all public entries - not guest entries
+"events" - displays all your public entries
+
 # Get your fanpage id
 
 If your fanpage URL looks like ex. [http://www.facebook.com/redbull](http://www.facebook.com/redbull), you just replace 'www' with 'graph' and you will get the id amongst other informations.
