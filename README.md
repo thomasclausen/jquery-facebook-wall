@@ -52,7 +52,7 @@ Read the documentation from facebook: [http://developers.facebook.com/docs/authe
 
 # Feedback
 
-Let me start by saying I'm self-taught by scattering code across the web, so if you see some bad practices PLEASE contact me, so I can learn from the mistakes I'm making!
+I'm self-taught by scattering code across the web, so if you see some bad practices PLEASE contact me, so I can learn from the mistakes I'm making!
 
 Also feel free to contact me if you have som great ideas for improvements.
 
