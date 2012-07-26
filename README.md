@@ -48,7 +48,7 @@ If your profile URL looks like ex. [http://www.facebook.com/profile.php?id=56587
 
 # Get your acces token
 
-Read the documentation from facebook: [http://developers.facebook.com/docs/authentication/](http://developers.facebook.com/docs/authentication/)
+Read the documentation from facebook: [http://developers.facebook.com/docs/authentication/](http://developers.facebook.com/docs/authentication/) or this page: [http://neosmart-stream.com/facebook-2/how-to-create-a-facebook-access-token](http://neosmart-stream.com/facebook-2/how-to-create-a-facebook-access-token)
 
 # Feedback
 
