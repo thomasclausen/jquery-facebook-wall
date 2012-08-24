@@ -8,12 +8,14 @@
 			id: '',
 			access_token: '',
 			limit: 15, // You can also pass a custom limit as a parameter.
+			timeout: 400,
+			speed: 400,
+			effect: 'slide', // slide | fade | none
 			locale: 'da_DK', // your contry code
 			date_format: 'U',
 			avatar_size: 'square', // square | small | normal | large
 			message_length: 200,
 			show_guestentries: true, // true | false
-			show_comments: true // true | false
 		}, options);
 	
 		var graphURL = 'https://graph.facebook.com/';
@@ -25,25 +27,25 @@
 		var graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
 		var e = $(this);
 		
-		e.addClass('loading');
-		
+		e.append('<div class="facebook-loading"></div>');
+
 		$.getJSON(graphPOSTS, function(posts) {
-			var output = '';
-			
-			$.each(posts.data, function() {
+			$.each(posts.data.reverse(), function() {
+				var output = '';
+
 				if (this.type == 'link') {
-					post_class = 'type-link ';
+					post_class = ' type-link ';
 				} else if (this.type == 'photo') {
-					post_class = 'type-photo ';
+					post_class = ' type-photo ';
 				} else if (this.type == 'status') {
-					post_class = 'type-status ';
+					post_class = ' type-status ';
 				} else if (this.type == 'video') {
-					post_class = 'type-video ';
+					post_class = ' type-video ';
 				}
-				output += '<li class="' + post_class + 'avatar-size-' + options.avatar_size + ' clearfix">';
+				output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
 					output += '<a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" class="avatar" alt="' + this.from.name + '" /></a>';
 					
-					output += '<div class="message-from"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
+					output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
 					if (this.message != null || this.message != undefined) {
 						if (this.message.length > options.message_length) {
 							output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
@@ -91,23 +93,28 @@
 						} else {
 							output += '<span class="seperator">&middot;</span><span class="likes">0 synes godt om</span>';
 						}
-						output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentarer</span>';
+						if (this.comments.count == 1) {
+							output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentar</span>';
+						} else {
+							output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentarer</span>';
+						}
 						split_id = this.id.split('_');
 						output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Tilf&oslash;j kommentar</a></span></div>';
 					output += '</div>';
 					
 					if (this.likes != null || this.likes != undefined) {
-						if (this.likes.count >= 1 && this.likes.count <= 4) {
+						if (this.likes.count >= 1) {
 								output += '<ul class="like-list">';
 								for (var l = 0; l < this.likes.data.length; l++) {
 									output += '<li class="like">';
-										output += '<div class="like-from"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a></div>';
+										output += '<a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.likes.data[l].name + '" /></a>';
+										output += '<div class="like-from"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
 									output += '</li>';
 								}
 							output += '</ul>';
 						}
 					}
-					if (this.comments.count >= 1 && options.show_comments == true) {
+					if (this.comments.count >= 1) {
 						output += '<ul class="comment-list">';
 							for (var c = 0; c < this.comments.data.length; c++) {
 								output += '<li class="comment">';
@@ -117,15 +124,27 @@
 									output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
 								output += '</li>';
 							}
+							if (this.comments.data.length < this.comments.count) {
+								output += '<li class="read_more"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">L&aelig;s alle kommentarer &raquo;</a></li>';
+							}
 						output += '</ul>';
 					}
-				
 				output += '</li>';
+
+				e.prepend(output);
 			});
-			
-			e.prepend(output);
 		}).complete(function() {
-			e.removeClass('loading');
+			$('.facebook-loading').fadeOut(800, function() {
+				for (var p = 0; p < e.children('li').length; p++) {
+					if (options.effect == 'slide') {
+						e.children('li').eq(p).delay(p*options.timeout).slideDown(options.speed);
+					} else if (options.effect == 'fade') {
+						e.children('li').eq(p).delay(p*options.timeout).fadeIn(options.speed);
+					} else {
+						e.children('li').eq(p).show();
+					}
+				}
+			});
 		});
 	
 		function modText(text) {
@@ -140,11 +159,6 @@
 		function escapeTags(str) {
 			return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		}
-	
-		function urlHyperlinks(str) {
-			return str.replace(/\b((http|https):\/\/\S+)/g, '<a href="$1" target="_blank">$1</a>');
-		}
-	
 		function timeToHuman(time) {
 			var timestamp = new Date(time*1000);
 			dateString = timestamp.toGMTString();
