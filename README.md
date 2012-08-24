@@ -4,7 +4,7 @@ jQuery plugin that lets you show the latest updates from your facebook profile o
 
 # Examples
 
-Currently no examples...
+The plugin can be seen live here: [http://beta.thomasclausen.dk/facebook-wall/](http://beta.thomasclausen.dk/facebook-wall/)
 
 # Usage
 
@@ -26,19 +26,15 @@ options:
 
     id: '' - insert your profile og fanpage id
     access_token: '' - insert your acces token
-    type: feed | posts | events - will eventually support more of these posibilities: http://developers.facebook.com/docs/reference/api/
     limit: 10 - any amount from 1-15
+    timeout: 400 - any amount (in miliseconds)
+    speed: 400 - any amount (in miliseconds)
+    effect: 'slide' - choices: 'slide', 'fade' or 'none'
     locale: 'da_DK' - your contry code
     date_format: 'U' - 
     avatar_size: 'square' - choices: 'square', 'small', 'normal' or 'large'
     message_length: 200 - the length of the message
     show_guestentries: true - choices: 'true' or 'false'
-    show_comments: true - choices: 'true' or 'false'
-
-For the "type" parameter you have the following options:
-"feed" - displays all your public entries - including guest entries
-"posts" - displays only your own all public entries - not guest entries
-"events" - displays all your public entries
 
 # Get your fanpage id
 
