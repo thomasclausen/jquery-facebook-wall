@@ -26,6 +26,7 @@ options:
 
     id: '' - insert your profile og fanpage id
     access_token: '' - insert your acces token
+    type: feed | posts | events - will eventually support more of these posibilities: http://developers.facebook.com/docs/reference/api/
     limit: 10 - any amount from 1-15
     locale: 'da_DK' - your contry code
     date_format: 'U' - 
@@ -33,6 +34,11 @@ options:
     message_length: 200 - the length of the message
     show_guestentries: true - choices: 'true' or 'false'
     show_comments: true - choices: 'true' or 'false'
+
+For the "type" parameter you have the following options:
+"feed" - displays all your public entries - including guest entries
+"posts" - displays only your own all public entries - not guest entries
+"events" - displays all your public entries
 
 # Get your fanpage id
 
