@@ -43,7 +43,7 @@
 					post_class = ' type-video ';
 				}
 				output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
-					output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" class="avatar" alt="' + this.from.name + '" /></a></div>';
+					output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
 					
 					output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
 					if (this.message != null || this.message != undefined) {
