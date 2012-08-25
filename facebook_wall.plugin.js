@@ -43,7 +43,7 @@
 					post_class = ' type-video ';
 				}
 				output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
-					output += '<div class="post-meta-header">';
+					output += '<div class="meta-header">';
 						output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
 						output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
 						output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
@@ -89,7 +89,7 @@
 						output += '</div>';
 					}
 					
-					output += '<div class="post-meta-footer">';
+					output += '<div class="meta-footer">';
 						output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
 						if (this.likes != null || this.likes != undefined) {
 							output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
@@ -110,7 +110,7 @@
 							output += '<ul class="like-list">';
 								for (var l = 0; l < this.likes.data.length; l++) {
 									output += '<li class="like">';
-										output += '<div class="like-meta-header">';
+										output += '<div class="meta-header">';
 											output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" alt="' + this.likes.data[l].name + '" /></a></div>';
 											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
 										output += '</div>';
@@ -123,7 +123,7 @@
 						output += '<ul class="comment-list">';
 							for (var c = 0; c < this.comments.data.length; c++) {
 								output += '<li class="comment">';
-									output += '<div class="comment-meta-header">';
+									output += '<div class="meta-header">';
 										output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.comments.data[c].from.name + '" /></a></div>';
 										output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
 										output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
