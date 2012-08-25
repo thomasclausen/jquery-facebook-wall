@@ -46,7 +46,7 @@
 					output += '<div class="post-meta-header">';
 						output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
 						output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
-						output += '<div class="date">' + timeToHuman(this.created_time) + '</span>';
+						output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
 					output += '</div>';
 					
 					if (this.message != null || this.message != undefined) {
