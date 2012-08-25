@@ -110,7 +110,7 @@
 							output += '<ul class="like-list">';
 								for (var l = 0; l < this.likes.data.length; l++) {
 									output += '<li class="like">';
-										output += '<a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.likes.data[l].name + '" /></a>';
+										output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.likes.data[l].name + '" /></a></div>';
 										output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
 									output += '</li>';
 								}
@@ -121,8 +121,11 @@
 						output += '<ul class="comment-list">';
 							for (var c = 0; c < this.comments.data.length; c++) {
 								output += '<li class="comment">';
-									output += '<a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.comments.data[c].from.name + '" /></a>';
-									output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
+									output += '<div class="comment-meta-header">';
+										output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.comments.data[c].from.name + '" /></a></div>';
+										output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
+										output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
+									output += '</div>';
 									output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
 									output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
 								output += '</li>';
