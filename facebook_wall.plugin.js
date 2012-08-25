@@ -43,9 +43,11 @@
 					post_class = ' type-video ';
 				}
 				output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
-					output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
-					
-					output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
+					output += '<div class="post-meta-header">';
+						output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
+						output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
+						output += '<div class="date">' + timeToHuman(this.created_time) + '</span>';
+					output += '</div>';
 					if (this.message != null || this.message != undefined) {
 						if (this.message.length > options.message_length) {
 							output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
@@ -86,7 +88,7 @@
 						output += '</div>';
 					}
 					
-					output += '<div class="post-meta">';
+					output += '<div class="post-meta-footer">';
 						output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
 						if (this.likes != null || this.likes != undefined) {
 							output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
@@ -104,7 +106,7 @@
 					
 					if (this.likes != null || this.likes != undefined) {
 						if (this.likes.count >= 1) {
-								output += '<ul class="like-list">';
+							output += '<ul class="like-list">';
 								for (var l = 0; l < this.likes.data.length; l++) {
 									output += '<li class="like">';
 										output += '<a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" class="avatar comment-avatar" alt="' + this.likes.data[l].name + '" /></a>';
