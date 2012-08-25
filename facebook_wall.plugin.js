@@ -48,6 +48,7 @@
 						output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
 						output += '<div class="date">' + timeToHuman(this.created_time) + '</span>';
 					output += '</div>';
+					
 					if (this.message != null || this.message != undefined) {
 						if (this.message.length > options.message_length) {
 							output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
