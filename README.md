@@ -34,7 +34,7 @@ options:
     date_format: 'U' - 
     avatar_size: 'square' - choices: 'square', 'small', 'normal' or 'large'
     message_length: 200 - the length of the message
-    show_guestentries: true - choices: 'true' or 'false'
+    show_guest_entries: true - choices: 'true' or 'false'
 
 # Get your fanpage id
 
