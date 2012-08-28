@@ -161,7 +161,7 @@
 			return nl2br(autoLink(escapeTags(text)));
 		}
 		function nl2br(str) {
-			return str.replace(/(\r\n)|(\n\r)|\r|\n/g, '<br>');
+			return str.replace(/(\r\n)|(\n\r)|\r|\n/g, '<br />');
 		}
 		function autoLink(str) {
 			return str.replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a href="$1" target="_blank">$1</a>');
