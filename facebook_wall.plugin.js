@@ -33,113 +33,115 @@
 			$.each(posts.data.reverse(), function() {
 				var output = '';
 
-				if (this.type == 'link') {
-					post_class = ' type-link ';
-				} else if (this.type == 'photo') {
-					post_class = ' type-photo ';
-				} else if (this.type == 'status') {
-					post_class = ' type-status ';
-				} else if (this.type == 'video') {
-					post_class = ' type-video ';
-				}
-				output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
-					output += '<div class="meta-header">';
-						output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
-						output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
-						output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
-					output += '</div>';
-					
-					if (this.message != null || this.message != undefined) {
-						if (this.message.length > options.message_length) {
-							output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
-						} else {
-							output += '<div class="message">' + modText(this.message) + '</div>';
-						}
-					} else if (this.story != null || this.story != undefined) {
-						if (this.story.length > options.message_length) {
-							output += '<div class="story">' + modText(this.story.substring(0, options.message_length)) + '...</div>';
-						} else {
-							output += '<div class="story">' + modText(this.story) + '</div>';
-						}
+				if (this.is_hidden == null || this.is_hidden == undefined) {
+					if (this.type == 'link') {
+						post_class = ' type-link ';
+					} else if (this.type == 'photo') {
+						post_class = ' type-photo ';
+					} else if (this.type == 'status') {
+						post_class = ' type-status ';
+					} else if (this.type == 'video') {
+						post_class = ' type-video ';
 					}
-					
-					if (this.type == 'link' || this.type == 'photo' || this.type == 'video') {
-						if ((this.picture == null || this.picture == undefined) && (this.object_id == null || this.object_id == undefined)) {
-							media_class = ' border-left';
-						} else {
-							media_class = '';
-						}
-						output += '<div class="media' + media_class + ' clearfix">';
-							if (this.picture != null || this.picture != undefined) {
-								output += '<a href="' + this.link + '"><img src="' + this.picture + '" /></a>';
-							} else if (this.object_id != null || this.object_id != undefined) {
-								output += '<a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a>';
-							}
-							output += '<div class="media-meta">';
-							if (this.name != null || this.name != undefined) {
-								output += '<div class="name"><a href="' + this.link + '">' + this.name + '</a></div>';
-							}
-							if (this.caption != null || this.caption != undefined) {
-								output += '<div class="caption">' + modText(this.caption) + '</div>';
-							}
-							if (this.description != null || this.description != undefined) {
-								output += '<div class="description">' + modText(this.description) + '</div>';
-							}
-							output += '</div>';
+					output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
+						output += '<div class="meta-header">';
+							output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
+							output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
+							output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
 						output += '</div>';
-					}
-					
-					output += '<div class="meta-footer">';
-						output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
+						
+						if (this.message != null || this.message != undefined) {
+							if (this.message.length > options.message_length) {
+								output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
+							} else {
+								output += '<div class="message">' + modText(this.message) + '</div>';
+							}
+						} else if (this.story != null || this.story != undefined) {
+							if (this.story.length > options.message_length) {
+								output += '<div class="story">' + modText(this.story.substring(0, options.message_length)) + '...</div>';
+							} else {
+								output += '<div class="story">' + modText(this.story) + '</div>';
+							}
+						}
+						
+						if (this.type == 'link' || this.type == 'photo' || this.type == 'video') {
+							if ((this.picture == null || this.picture == undefined) && (this.object_id == null || this.object_id == undefined)) {
+								media_class = ' border-left';
+							} else {
+								media_class = '';
+							}
+							output += '<div class="media' + media_class + ' clearfix">';
+								if (this.picture != null || this.picture != undefined) {
+									output += '<a href="' + this.link + '"><img src="' + this.picture + '" /></a>';
+								} else if (this.object_id != null || this.object_id != undefined) {
+									output += '<a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a>';
+								}
+								output += '<div class="media-meta">';
+								if (this.name != null || this.name != undefined) {
+									output += '<div class="name"><a href="' + this.link + '">' + this.name + '</a></div>';
+								}
+								if (this.caption != null || this.caption != undefined) {
+									output += '<div class="caption">' + modText(this.caption) + '</div>';
+								}
+								if (this.description != null || this.description != undefined) {
+									output += '<div class="description">' + modText(this.description) + '</div>';
+								}
+								output += '</div>';
+							output += '</div>';
+						}
+						
+						output += '<div class="meta-footer">';
+							output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
+							if (this.likes != null || this.likes != undefined) {
+								output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
+							} else {
+								output += '<span class="seperator">&middot;</span><span class="likes">0 synes godt om</span>';
+							}
+							if (this.comments.count == 1) {
+								output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentar</span>';
+							} else {
+								output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentarer</span>';
+							}
+							split_id = this.id.split('_');
+							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Tilf&oslash;j kommentar</a></span></div>';
+						output += '</div>';
+						
 						if (this.likes != null || this.likes != undefined) {
-							output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
-						} else {
-							output += '<span class="seperator">&middot;</span><span class="likes">0 synes godt om</span>';
+							if (this.likes.count >= 1) {
+								output += '<ul class="like-list">';
+									for (var l = 0; l < this.likes.data.length; l++) {
+										output += '<li class="like">';
+											output += '<div class="meta-header">';
+												output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" alt="' + this.likes.data[l].name + '" /></a></div>';
+												output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
+											output += '</div>';
+										output += '</li>';
+									}
+								output += '</ul>';
+							}
 						}
-						if (this.comments.count == 1) {
-							output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentar</span>';
-						} else {
-							output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentarer</span>';
-						}
-						split_id = this.id.split('_');
-						output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Tilf&oslash;j kommentar</a></span></div>';
-					output += '</div>';
-					
-					if (this.likes != null || this.likes != undefined) {
-						if (this.likes.count >= 1) {
-							output += '<ul class="like-list">';
-								for (var l = 0; l < this.likes.data.length; l++) {
-									output += '<li class="like">';
+						if (this.comments.count >= 1) {
+							output += '<ul class="comment-list">';
+								for (var c = 0; c < this.comments.data.length; c++) {
+									output += '<li class="comment">';
 										output += '<div class="meta-header">';
-											output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" alt="' + this.likes.data[l].name + '" /></a></div>';
-											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
+											output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.comments.data[c].from.name + '" /></a></div>';
+											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
+											output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
 										output += '</div>';
+										output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
+										output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
 									output += '</li>';
+								}
+								if (this.comments.data.length < this.comments.count) {
+									output += '<li class="read_more"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">L&aelig;s alle kommentarer &raquo;</a></li>';
 								}
 							output += '</ul>';
 						}
-					}
-					if (this.comments.count >= 1) {
-						output += '<ul class="comment-list">';
-							for (var c = 0; c < this.comments.data.length; c++) {
-								output += '<li class="comment">';
-									output += '<div class="meta-header">';
-										output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.comments.data[c].from.name + '" /></a></div>';
-										output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
-										output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
-									output += '</div>';
-									output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
-									output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
-								output += '</li>';
-							}
-							if (this.comments.data.length < this.comments.count) {
-								output += '<li class="read_more"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">L&aelig;s alle kommentarer &raquo;</a></li>';
-							}
-						output += '</ul>';
-					}
-				output += '</li>';
-
-				e.prepend(output);
+					output += '</li>';
+	
+					e.prepend(output);
+				}
 			});
 		}).complete(function() {
 			$('.facebook-loading').fadeOut(800, function() {
