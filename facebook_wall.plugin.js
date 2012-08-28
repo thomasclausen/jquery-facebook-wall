@@ -1,6 +1,6 @@
 (function($) {
 	$.fn.facebook_wall = function(options) {
-		if(options.id == undefined || options.access_token == undefined) {
+		if (options.id == undefined || options.access_token == undefined) {
 			return;
 		}
 		
@@ -15,11 +15,11 @@
 			date_format: 'U',
 			avatar_size: 'square', // square | small | normal | large
 			message_length: 200,
-			show_guestentries: true, // true | false
+			show_guest_entries: true, // true | false
 		}, options);
 	
 		var graphURL = 'https://graph.facebook.com/';
-		if (options.show_guestentries == true) {
+		if (options.show_guest_entries == true) {
 			var graphTYPE = 'feed';
 		} else {
 			var graphTYPE = 'posts';
