@@ -19,10 +19,10 @@
 		}, options);
 	
 		var graphURL = 'https://graph.facebook.com/';
-		if (options.show_guest_entries == true) {
-			var graphTYPE = 'feed';
-		} else {
+		if (options.show_guest_entries == false) {
 			var graphTYPE = 'posts';
+		} else {
+			var graphTYPE = 'feed';
 		}
 		var graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
 		var e = $(this);
