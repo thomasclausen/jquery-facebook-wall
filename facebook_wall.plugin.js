@@ -146,12 +146,12 @@
 		}).complete(function() {
 			$('.facebook-loading').fadeOut(800, function() {
 				for (var p = 0; p < e.children('li').length; p++) {
-					if (options.effect == 'slide') {
-						e.children('li').eq(p).delay(p*options.timeout).slideDown(options.speed);
+					if (options.effect == 'none') {
+						e.children('li').eq(p).show();
 					} else if (options.effect == 'fade') {
 						e.children('li').eq(p).delay(p*options.timeout).fadeIn(options.speed);
 					} else {
-						e.children('li').eq(p).show();
+						e.children('li').eq(p).delay(p*options.timeout).slideDown(options.speed);
 					}
 				}
 			});
