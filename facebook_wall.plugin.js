@@ -77,15 +77,15 @@
 									output += '<a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a>';
 								}
 								output += '<div class="media-meta">';
-								if (this.name != null || this.name != undefined) {
-									output += '<div class="name"><a href="' + this.link + '">' + this.name + '</a></div>';
-								}
-								if (this.caption != null || this.caption != undefined) {
-									output += '<div class="caption">' + modText(this.caption) + '</div>';
-								}
-								if (this.description != null || this.description != undefined) {
-									output += '<div class="description">' + modText(this.description) + '</div>';
-								}
+									if (this.name != null || this.name != undefined) {
+										output += '<div class="name"><a href="' + this.link + '">' + this.name + '</a></div>';
+									}
+									if (this.caption != null || this.caption != undefined) {
+										output += '<div class="caption">' + modText(this.caption) + '</div>';
+									}
+									if (this.description != null || this.description != undefined) {
+										output += '<div class="description">' + modText(this.description) + '</div>';
+									}
 								output += '</div>';
 							output += '</div>';
 						}
