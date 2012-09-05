@@ -65,7 +65,7 @@
 						}
 						
 						if (this.type == 'link' || this.type == 'photo' || this.type == 'video') {
-							if ((this.picture == null || this.picture == undefined) && (this.object_id == null || this.object_id == undefined)) {
+							if ((this.picture != null || this.picture != undefined) || (this.object_id != null || this.object_id != undefined)) {
 								media_class = ' border-left';
 							} else {
 								media_class = '';
