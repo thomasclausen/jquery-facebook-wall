@@ -60,14 +60,14 @@ sub { top: 0.4em; }
 #facebook_wall li .media .media-meta .caption { font-style: italic; }
 #facebook_wall li .media .media-meta .description { }
 
-#facebook_wall li .post-meta { font-size: 9px; line-height: 16px; color: #a1a1a1; clear: both; }
-#facebook_wall li .post-meta .seperator { padding: 0 4px; }
-#facebook_wall li .post-meta .date { }
-#facebook_wall li .post-meta .likes { }
-#facebook_wall li .post-meta .comments { }
-#facebook_wall li .post-meta .actionlinks { }
-#facebook_wall li .post-meta .actionlinks .like { }
-#facebook_wall li .post-meta .actionlinks .comment { }
+#facebook_wall li .meta-footer { font-size: 9px; line-height: 16px; color: #a1a1a1; clear: both; }
+#facebook_wall li .meta-footer .seperator { padding: 0 4px; }
+#facebook_wall li .meta-footer .date { }
+#facebook_wall li .meta-footer .likes { }
+#facebook_wall li .meta-footer .comments { }
+#facebook_wall li .meta-footer .actions { }
+#facebook_wall li .meta-footer .actions .like { }
+#facebook_wall li .meta-footer .actions .comment { }
 
 #facebook_wall li ul.like-list { margin-top: 10px; display: none; }
 #facebook_wall li ul.like-list li.like { font-size: 11px; line-height: 16px; margin-top: 2px; border-top: none; background: #e0e0e0; display: block; }
