@@ -51,12 +51,12 @@ sub { top: 0.4em; }
 #facebook_wall li .meta-header .date { display: none; }
 
 #facebook_wall li .message { color: #666; margin-bottom: 16px; }
-#facebook_wall li .story { font-style: italic; }
+#facebook_wall li .story { font-style: italic; color: #666; margin-bottom: 16px; }
 
 #facebook_wall li .media { color: #8a8a8a; margin: 10px 0; }
 #facebook_wall li .media.border-left { padding-left: 10px; border-left: 2px solid #a1a1a1; }
 #facebook_wall li .media img { max-width: 100%; height: auto; padding: 2px; margin-right: 10px; border: 1px solid #a1a1a1; float: left; display: inline; }
-#facebook_wall li .media .media-meta { display: table; }
+#facebook_wall li .media .media-meta { float: left; display: table; }
 #facebook_wall li .media .media-meta .name { font-weight: bold; }
 #facebook_wall li .media .media-meta .caption { font-style: italic; }
 #facebook_wall li .media .media-meta .description { }
