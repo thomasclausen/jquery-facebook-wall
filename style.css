@@ -45,6 +45,7 @@ sub { top: 0.4em; }
 #facebook_wall li { min-height: 52px; padding: 10px 10px 10px 72px; border-top: 1px solid #d4d4d4; display: none; position: relative; }
 #facebook_wall li:first-child { border-top: none; }
 
+#facebook_wall li .meta-header { }
 #facebook_wall li .meta-header .avatar { width: 50px; height: 50px; border: 1px solid #999; position: absolute; top: 10px; left: 10px; }
 #facebook_wall li .meta-header .author { font-weight: bold; }
 #facebook_wall li .meta-header .date { display: none; }
