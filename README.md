@@ -33,7 +33,7 @@ options:
     locale: 'da_DK' - your contry code
     date_format: 'U' - 
     avatar_size: 'square' - choices: 'square', 'small', 'normal' or 'large'
-    message_length: 200 - the length of the message
+    message_length: 200, // Any amount you like. Above 0 shortens the message length
     show_guest_entries: true - choices: 'true' or 'false'
 
 # Get your fanpage id
