@@ -107,7 +107,7 @@
 						output += '</div>';
 						
 						if (this.likes != null || this.likes != undefined) {
-							if (this.likes.count >= 1) {
+							if (this.likes.count > 0 && this.likes.data != undefined) {
 								output += '<ul class="like-list">';
 									for (var l = 0; l < this.likes.data.length; l++) {
 										output += '<li class="like">';
@@ -120,7 +120,7 @@
 								output += '</ul>';
 							}
 						}
-						if (this.comments.count >= 1) {
+						if (this.comments.count > 0 && this.comments.data != undefined) {
 							output += '<ul class="comment-list">';
 								for (var c = 0; c < this.comments.data.length; c++) {
 									output += '<li class="comment">';
