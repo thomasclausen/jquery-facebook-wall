@@ -14,7 +14,7 @@
 			locale: 'da_DK', // your contry code
 			date_format: 'U',
 			avatar_size: 'square', // square | small | normal | large
-			message_length: 200,
+			message_length: 200, // Any amount you like. Above 0 shortens the message length
 			show_guest_entries: true, // true | false
 		}, options);
 	
@@ -51,13 +51,13 @@
 						output += '</div>';
 						
 						if (this.message != null || this.message != undefined) {
-							if (this.message.length > options.message_length) {
+							if (options.message_length > 0 && this.message.length > options.message_length) {
 								output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
 							} else {
 								output += '<div class="message">' + modText(this.message) + '</div>';
 							}
 						} else if (this.story != null || this.story != undefined) {
-							if (this.story.length > options.message_length) {
+							if (options.message_length > 0 && this.story.length > options.message_length) {
 								output += '<div class="story">' + modText(this.story.substring(0, options.message_length)) + '...</div>';
 							} else {
 								output += '<div class="story">' + modText(this.story) + '</div>';
