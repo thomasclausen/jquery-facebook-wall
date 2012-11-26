@@ -15,7 +15,7 @@
 			date_format: 'U',
 			avatar_size: 'square', // square | small | normal | large
 			message_length: 200, // Any amount you like. Above 0 shortens the message length
-			show_guest_entries: true, // true | false
+			show_guest_entries: true // true | false
 		}, options);
 	
 		var graphURL = 'https://graph.facebook.com/';
