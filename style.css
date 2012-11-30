@@ -55,7 +55,8 @@ sub { top: 0.4em; }
 
 #facebook_wall li .media { color: #8a8a8a; margin: 10px 0; }
 #facebook_wall li .media.border-left { padding-left: 10px; border-left: 2px solid #a1a1a1; }
-#facebook_wall li .media .image img { max-width: 100%; height: auto; padding: 2px; margin-right: 10px; border: 1px solid #a1a1a1; float: left; }
+#facebook_wall li .media .image { margin-right: 10px; float: left; }
+#facebook_wall li .media .image img { max-width: 100%; height: auto; padding: 2px; border: 1px solid #a1a1a1; }
 #facebook_wall li .media .media-meta { float: left; display: table; }
 #facebook_wall li .media .media-meta .name { font-weight: bold; }
 #facebook_wall li .media .media-meta .caption { font-style: italic; }
