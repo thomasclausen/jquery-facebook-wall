@@ -72,9 +72,9 @@
 							}
 							output += '<div class="media' + media_class + ' clearfix">';
 								if (this.picture != null || this.picture != undefined) {
-									output += '<a href="' + this.link + '"><img src="' + this.picture + '" /></a>';
+									output += '<div class="image"><a href="' + this.link + '"><img src="' + this.picture + '" /></a></div>';
 								} else if (this.object_id != null || this.object_id != undefined) {
-									output += '<a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a>';
+									output += '<div class="image"><a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a></div>';
 								}
 								output += '<div class="media-meta">';
 									if (this.name != null || this.name != undefined) {
