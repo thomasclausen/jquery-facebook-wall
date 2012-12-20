@@ -151,7 +151,9 @@
 					} else if (options.effect == 'fade') {
 						e.children('li').eq(p).delay(p*options.timeout).fadeIn(options.speed);
 					} else {
-						e.children('li').eq(p).delay(p*options.timeout).slideDown(options.speed);
+						e.children('li').eq(p).delay(p*options.timeout).slideDown(options.speed, function() {
+							$(this).css('overflow', 'visible');
+						});
 					}
 				}
 			});
