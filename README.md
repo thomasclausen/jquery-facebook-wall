@@ -8,8 +8,6 @@ The plugin can be seen live here: [http://beta.thomasclausen.dk/facebook-wall/](
 
 # Usage
 
-Download it, upload it and activate it!
-
 Insert the following code to activate the pluign:
 
     (function($) {
