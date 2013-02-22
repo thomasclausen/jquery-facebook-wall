@@ -46,7 +46,7 @@ If your profile URL looks like ex. [http://www.facebook.com/thomasclausen.dk](ht
 
 If your profile URL looks like ex. [http://www.facebook.com/profile.php?id=565874665](http://www.facebook.com/profile.php?id=565874665), the number at the end of the URL is the id.
 
-#3# Get your acces token
+### Get your acces token
 
 Read the documentation from facebook: [http://developers.facebook.com/docs/authentication/](http://developers.facebook.com/docs/authentication/) or this page: [http://neosmart-stream.com/facebook-2/how-to-create-a-facebook-access-token](http://neosmart-stream.com/facebook-2/how-to-create-a-facebook-access-token)
 
