@@ -30,7 +30,7 @@
 		e.append('<div class="facebook-loading"></div>');
 
 		$.getJSON(graphPOSTS, function(posts) {
-			$.each(posts.data.reverse(), function() {
+			$.each(posts.data, function() {
 				var output = '';
 
 				if (this.is_hidden == null || this.is_hidden == undefined) {
@@ -140,7 +140,7 @@
 						}
 					output += '</li>';
 	
-					e.prepend(output);
+					e.append(output);
 				}
 			});
 		}).complete(function() {
