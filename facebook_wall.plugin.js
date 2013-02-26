@@ -144,7 +144,7 @@
 				}
 			});
 		}).complete(function() {
-			$('.facebook-loading').fadeOut(800, function() {
+			$('.facebook-loading', e).fadeOut(800, function() {
 				for (var p = 0; p < e.children('li').length; p++) {
 					if (options.effect == 'none') {
 						e.children('li').eq(p).show();
