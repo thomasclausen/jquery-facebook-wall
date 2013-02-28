@@ -34,7 +34,7 @@
 				var output = '';
 
 				if (this.is_hidden == null || this.is_hidden == undefined) {
-					var post_class = '';
+					var post_class = ' ';
 					if (this.type == 'link') {
 						post_class = ' type-link ';
 					} else if (this.type == 'photo') {
