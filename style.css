@@ -18,7 +18,7 @@
 /* GLOBAL */
 body { min-width: 1000px; font: 11px Arial, Helvetica, Verdana, sans-serif; line-height: 16px; color: #333; background: #fff; }
 h1 { font-size: 14px; line-height: 1.25em; margin: 0 0 16px 0; }
-h2 { font: 24px 'nimbus-sans', Arial, Helvetica, Verdana, sans-serif; font-style: normal; font-weight: 300; line-height: 1.25em; margin: 0 0 18px 0; }
+h2 { font-size: 24px; font-style: normal; font-weight: 300; line-height: 1.25em; margin: 0 0 18px 0; }
 h3, h4, h5, h6 { font-size: 11px; line-height: 1.25em; margin: 0; }
 p { margin-bottom: 16px; }
 a { color: #000; text-decoration: none; }
