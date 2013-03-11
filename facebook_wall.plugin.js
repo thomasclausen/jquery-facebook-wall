@@ -34,17 +34,17 @@
 				var output = '';
 
 				if (this.is_hidden == null || this.is_hidden == undefined) {
-					var post_class = ' ';
+					var post_class = '';
 					if (this.type == 'link') {
-						post_class = ' type-link ';
+						post_class = 'type-link ';
 					} else if (this.type == 'photo') {
-						post_class = ' type-photo ';
+						post_class = 'type-photo ';
 					} else if (this.type == 'status') {
-						post_class = ' type-status ';
+						post_class = 'type-status ';
 					} else if (this.type == 'video') {
-						post_class = ' type-video ';
+						post_class = 'type-video ';
 					}
-					output += '<li class="post' + post_class + 'avatar-size-' + options.avatar_size + '">';
+					output += '<li class="post ' + post_class + 'avatar-size-' + options.avatar_size + '">';
 						output += '<div class="meta-header">';
 							output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '"><img src="' + (graphURL + this.from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.from.name + '" /></a></div>';
 							output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.from.id + '" target="_blank" title="' + this.from.name + '">' + this.from.name + '</a></div>';
