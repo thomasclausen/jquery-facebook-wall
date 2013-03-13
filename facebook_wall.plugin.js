@@ -73,13 +73,13 @@
 							}
 							output += '<div class="media' + media_class + ' clearfix">';
 								if (this.picture != null || this.picture != undefined) {
-									output += '<div class="image"><a href="' + this.link + '"><img src="' + this.picture + '" /></a></div>';
+									output += '<div class="image"><a href="' + this.link + '" target="_blank"><img src="' + this.picture + '" /></a></div>';
 								} else if (this.object_id != null || this.object_id != undefined) {
-									output += '<div class="image"><a href="' + this.link + '"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a></div>';
+									output += '<div class="image"><a href="' + this.link + '" target="_blank"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a></div>';
 								}
 								output += '<div class="media-meta">';
 									if (this.name != null || this.name != undefined) {
-										output += '<div class="name"><a href="' + this.link + '">' + this.name + '</a></div>';
+										output += '<div class="name"><a href="' + this.link + '" target="_blank">' + this.name + '</a></div>';
 									}
 									if (this.caption != null || this.caption != undefined) {
 										output += '<div class="caption">' + modText(this.caption) + '</div>';
