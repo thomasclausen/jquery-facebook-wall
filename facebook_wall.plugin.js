@@ -147,6 +147,7 @@
 			});
 		}).complete(function() {
 			$('.facebook-loading', e).fadeOut(800, function() {
+				$(this).remove();
 				for (var p = 0; p < e.children('li').length; p++) {
 					if (options.effect == 'none') {
 						e.children('li').eq(p).show();
