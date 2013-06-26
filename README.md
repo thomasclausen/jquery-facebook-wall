@@ -50,6 +50,8 @@ If your profile URL looks like ex. [http://www.facebook.com/profile.php?id=56587
 
 Read the documentation from facebook: [http://developers.facebook.com/docs/authentication/](http://developers.facebook.com/docs/authentication/) or this page: [http://neosmart-stream.com/facebook-2/how-to-create-a-facebook-access-token](http://neosmart-stream.com/facebook-2/how-to-create-a-facebook-access-token)
 
+Create a access_token that doesn't expires after 1 hour: [https://developers.facebook.com/docs/opengraph/howtos/publishing-with-app-token/](https://developers.facebook.com/docs/opengraph/howtos/publishing-with-app-token/)
+
 ### Feedback
 
 I'm self-taught by scattering code across the web, so if you see some bad practices PLEASE contact me, so I can learn from the mistakes I'm making!
