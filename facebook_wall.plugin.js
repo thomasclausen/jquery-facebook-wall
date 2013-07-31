@@ -19,23 +19,21 @@
 			on_complete: null
 		}, options);
 	
-		var graphURL = 'https://graph.facebook.com/';
-		if (options.show_guest_entries == false) {
-			var graphTYPE = 'posts';
-		} else {
-			var graphTYPE = 'feed';
-		}
-		var graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?';
-		var e = $(this);
+		var graphURL = 'https://graph.facebook.com/',
+			graphTYPE = (options.show_guest_entries === false) ? 'posts' : 'feed',
+			graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?',
+			e = $(this);
 		
 		e.append('<div class="facebook-loading"></div>');
 
 		$.getJSON(graphPOSTS, function(posts) {
 			$.each(posts.data, function() {
-				var output = '';
+				var output = '',
+					post_class = '',
+					media_class = '',
+					split_id = '';
 
 				if (this.is_hidden == null || this.is_hidden == undefined) {
-					var post_class = '';
 					if (this.type == 'link') {
 						post_class = 'type-link ';
 					} else if (this.type == 'photo') {
@@ -99,13 +97,22 @@
 							} else {
 								output += '<span class="seperator">&middot;</span><span class="likes">0 synes godt om</span>';
 							}
-							if (this.comments.count == 1) {
-								output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentar</span>';
+							if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
+								if (this.comments.data.length == 1) {
+									output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.data.length + ' kommentar</span>';
+								} else {
+									output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.data.length + ' kommentarer</span>';
+								}
+							}
+							if (this.shares != null || this.shares != undefined) {
+								output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gange</span>';
+							} else if ((this.shares != null || this.shares != undefined) && this.shares.count === 1) {
+								output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gang</span>';
 							} else {
-								output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.count + ' kommentarer</span>';
+								output += '<span class="seperator">&middot;</span><span class="shares">Delt 0 gange</span>';
 							}
 							split_id = this.id.split('_');
-							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Tilf&oslash;j kommentar</a></span></div>';
+							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Skriv kommentar</a></span><span class="seperator">&middot;</span><span class="share"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Del</a></span></div>';
 						output += '</div>';
 						
 						if (this.likes != null || this.likes != undefined) {
@@ -122,7 +129,7 @@
 								output += '</ul>';
 							}
 						}
-						if (this.comments.count > 0 && this.comments.data != undefined) {
+						if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
 							output += '<ul class="comment-list">';
 								for (var c = 0; c < this.comments.data.length; c++) {
 									output += '<li class="comment">';
@@ -134,9 +141,6 @@
 										output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
 										output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
 									output += '</li>';
-								}
-								if (this.comments.data.length < this.comments.count) {
-									output += '<li class="read_more"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">L&aelig;s alle kommentarer &raquo;</a></li>';
 								}
 							output += '</ul>';
 						}
