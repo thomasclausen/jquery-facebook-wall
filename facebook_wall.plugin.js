@@ -92,22 +92,34 @@
 						
 						output += '<div class="meta-footer">';
 							output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
-							if (this.likes != null || this.likes != undefined) {
-								output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
-							} else {
-								output += '<span class="seperator">&middot;</span><span class="likes">0 synes godt om</span>';
+							if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
+								if (this.likes.count != null || this.likes.count != undefined) {
+									if (this.likes.count === 1) {
+										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
+									} else {
+										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
+									}
+								} else {
+									if (this.likes.data.length === 1) {
+										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.data.length + ' synes godt om</span>';
+									} else {
+										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.data.length + ' synes godt om</span>';
+									}
+								}
 							}
 							if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
-								if (this.comments.data.length == 1) {
+								if (this.comments.data.length === 1) {
 									output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.data.length + ' kommentar</span>';
 								} else {
 									output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.data.length + ' kommentarer</span>';
 								}
 							}
 							if (this.shares != null || this.shares != undefined) {
-								output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gange</span>';
-							} else if ((this.shares != null || this.shares != undefined) && this.shares.count === 1) {
-								output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gang</span>';
+								if (this.shares.count === 1) {
+									output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gang</span>';
+								} else {
+									output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gange</span>';
+								}
 							} else {
 								output += '<span class="seperator">&middot;</span><span class="shares">Delt 0 gange</span>';
 							}
@@ -115,19 +127,17 @@
 							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Skriv kommentar</a></span><span class="seperator">&middot;</span><span class="share"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Del</a></span></div>';
 						output += '</div>';
 						
-						if (this.likes != null || this.likes != undefined) {
-							if (this.likes.count > 0 && this.likes.data != undefined) {
-								output += '<ul class="like-list">';
-									for (var l = 0; l < this.likes.data.length; l++) {
-										output += '<li class="like">';
-											output += '<div class="meta-header">';
-												output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" alt="' + this.likes.data[l].name + '" /></a></div>';
-												output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
-											output += '</div>';
-										output += '</li>';
-									}
-								output += '</ul>';
-							}
+						if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
+							output += '<ul class="like-list">';
+								for (var l = 0; l < this.likes.data.length; l++) {
+									output += '<li class="like">';
+										output += '<div class="meta-header">';
+											output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" alt="' + this.likes.data[l].name + '" /></a></div>';
+											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
+										output += '</div>';
+									output += '</li>';
+								}
+							output += '</ul>';
 						}
 						if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
 							output += '<ul class="comment-list">';
