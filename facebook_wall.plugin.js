@@ -1,6 +1,6 @@
 (function($) {
 	$.fn.facebook_wall = function(options) {
-		if (options.id == undefined || options.access_token == undefined) {
+		if (options.id === undefined || options.access_token === undefined) {
 			return;
 		}
 		
@@ -33,14 +33,14 @@
 					media_class = '',
 					split_id = '';
 
-				if (this.is_hidden == null || this.is_hidden == undefined) {
-					if (this.type == 'link') {
+				if (this.is_hidden === null || this.is_hidden === undefined) {
+					if (this.type === 'link') {
 						post_class = 'type-link ';
-					} else if (this.type == 'photo') {
+					} else if (this.type === 'photo') {
 						post_class = 'type-photo ';
-					} else if (this.type == 'status') {
+					} else if (this.type === 'status') {
 						post_class = 'type-status ';
-					} else if (this.type == 'video') {
+					} else if (this.type === 'video') {
 						post_class = 'type-video ';
 					}
 					output += '<li class="post ' + post_class + 'avatar-size-' + options.avatar_size + '">';
@@ -64,7 +64,7 @@
 							}
 						}
 						
-						if (this.type == 'link' || this.type == 'photo' || this.type == 'video') {
+						if (this.type === 'link' || this.type === 'photo' || this.type === 'video') {
 							if ((this.picture != null || this.picture != undefined) || (this.object_id != null || this.object_id != undefined)) {
 								media_class = ' border-left';
 							} else {
@@ -163,9 +163,9 @@
 			$('.facebook-loading', e).fadeOut(800, function() {
 				$(this).remove();
 				for (var p = 0; p < e.children('li').length; p++) {
-					if (options.effect == 'none') {
+					if (options.effect === 'none') {
 						e.children('li').eq(p).show();
-					} else if (options.effect == 'fade') {
+					} else if (options.effect === 'fade') {
 						e.children('li').eq(p).delay(p*options.timeout).fadeIn(options.speed);
 					} else {
 						e.children('li').eq(p).delay(p*options.timeout).slideDown(options.speed, function() {
@@ -201,15 +201,15 @@
 				return 'F&aring; sekunder siden';
 			} else if (time_difference < 60) {
 				return Math.round(time_difference) + ' sekunder siden';
-			} else if (Math.round(time_difference/60) == 1) {
+			} else if (Math.round(time_difference/60) === 1) {
 				return Math.round(time_difference/60) + ' minut siden';
 			} else if (Math.round(time_difference/60) < 60) {
 				return Math.round(time_difference/60) + ' minutter siden';
-			} else if (Math.round(time_difference/(60*60)) == 1) {
+			} else if (Math.round(time_difference/(60*60)) === 1) {
 				return Math.round(time_difference/(60*60)) + ' time siden';
 			} else if (Math.round(time_difference/(60*60)) < 24) {
 				return Math.round(time_difference/(60*60)) + ' timer siden';
-			} else if (Math.round(time_difference/(60*60*24)) == 1) {
+			} else if (Math.round(time_difference/(60*60*24)) === 1) {
 				return Math.round(time_difference/(60*60*24)) + ' dag siden';
 			} else if (Math.round(time_difference/(60*60*24)) <= 10) {
 				return Math.round(time_difference/(60*60*24)) + ' dage siden';
