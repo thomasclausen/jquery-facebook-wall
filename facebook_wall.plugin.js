@@ -91,7 +91,7 @@
 						}
 						
 						output += '<div class="meta-footer">';
-							output += '<span class="date">' + timeToHuman(this.created_time) + '</span>';
+							output += '<time class="date" datetime="' + this.created_time + '" pubdate>' + timeToHuman(this.created_time) + '</time>';
 							if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
 								if (this.likes.count != null || this.likes.count != undefined) {
 									if (this.likes.count === 1) {
@@ -146,10 +146,10 @@
 										output += '<div class="meta-header">';
 											output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '"><img src="' + (graphURL + this.comments.data[c].from.id + '/picture?type=' + options.avatar_size) + '" alt="' + this.comments.data[c].from.name + '" /></a></div>';
 											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.comments.data[c].from.id + '" target="_blank" title="' + this.comments.data[c].from.name + '">' + this.comments.data[c].from.name + '</a></div>';
-											output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
+											output += '<time class="date" datetime="' + this.comments.data[c].created_time + '" pubdate>' + timeToHuman(this.comments.data[c].created_time) + '</time>';
 										output += '</div>';
 										output += '<div class="message">' + modText(this.comments.data[c].message) + '</div>';
-										output += '<div class="date">' + timeToHuman(this.comments.data[c].created_time) + '</div>';
+										output += '<time class="date" datetime="' + this.comments.data[c].created_time + '" pubdate>' + timeToHuman(this.comments.data[c].created_time) + '</time>';
 									output += '</li>';
 								}
 							output += '</ul>';
