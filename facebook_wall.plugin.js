@@ -16,6 +16,23 @@
 			avatar_size: 'square', // square | small | normal | large
 			message_length: 200, // Any amount you like. Above 0 shortens the message length
 			show_guest_entries: true, // true | false
+			text_labels: {
+				shares: {
+					singular: 'Delt % gang',
+					plural: 'Delt % gange'
+				},
+				likes: {
+					singular: '% synes godt om',
+					plural: '% synes godt om'
+				},
+				comments: {
+					singular: '% kommentar',
+					plural: '% kommentarer'
+				},
+				like: 'Synes godt om',
+				comment: 'Skriv kommentar',
+				share: 'Del'
+			},
 			on_complete: null
 		}, options);
 	
@@ -95,36 +112,36 @@
 							if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
 								if (this.likes.count != null || this.likes.count != undefined) {
 									if (this.likes.count === 1) {
-										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
+										output += '<span class="seperator">&middot;</span><span class="likes">' + options.text_labels.likes.singular.replace('%', this.likes.count) + '</span>';
 									} else {
-										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.count + ' synes godt om</span>';
+										output += '<span class="seperator">&middot;</span><span class="likes">' + options.text_labels.likes.plural.replace('%', this.likes.count) + '</span>';
 									}
 								} else {
 									if (this.likes.data.length === 1) {
-										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.data.length + ' synes godt om</span>';
+										output += '<span class="seperator">&middot;</span><span class="likes">' + options.text_labels.likes.singular.replace('%', this.likes.data.length) + '</span>';
 									} else {
-										output += '<span class="seperator">&middot;</span><span class="likes">' + this.likes.data.length + ' synes godt om</span>';
+										output += '<span class="seperator">&middot;</span><span class="likes">' + options.text_labels.likes.plural.replace('%', this.likes.data.length) + '</span>';
 									}
 								}
 							}
 							if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
 								if (this.comments.data.length === 1) {
-									output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.data.length + ' kommentar</span>';
+									output += '<span class="seperator">&middot;</span><span class="comments">' + options.text_labels.comments.singular.replace('%', this.comments.data.length) + '</span>';
 								} else {
-									output += '<span class="seperator">&middot;</span><span class="comments">' + this.comments.data.length + ' kommentarer</span>';
+									output += '<span class="seperator">&middot;</span><span class="comments">' + options.text_labels.comments.plural.replace('%', this.comments.data.length) + '</span>';
 								}
 							}
 							if (this.shares != null || this.shares != undefined) {
 								if (this.shares.count === 1) {
-									output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gang</span>';
+									output += '<span class="seperator">&middot;</span><span class="shares">' + options.text_labels.shares.singular.replace('%', this.shares.count) + '</span>';
 								} else {
-									output += '<span class="seperator">&middot;</span><span class="shares">Delt ' + this.shares.count + ' gange</span>';
+									output += '<span class="seperator">&middot;</span><span class="shares">' + options.text_labels.shares.plural.replace('%', this.shares.count) + '</span>';
 								}
 							} else {
-								output += '<span class="seperator">&middot;</span><span class="shares">Delt 0 gange</span>';
+								output += '<span class="seperator">&middot;</span><span class="shares">' + options.text_labels.shares.plural.replace('%', '0') + '</span>';
 							}
 							split_id = this.id.split('_');
-							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Synes godt om</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Skriv kommentar</a></span><span class="seperator">&middot;</span><span class="share"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">Del</a></span></div>';
+							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">' + options.text_labels.like + '</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">' + options.text_labels.comment + '</a></span><span class="seperator">&middot;</span><span class="share"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">' + options.text_labels.share + '</a></span></div>';
 						output += '</div>';
 						
 						if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
@@ -133,7 +150,7 @@
 									output += '<li class="like">';
 										output += '<div class="meta-header">';
 											output += '<div class="avatar"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '"><img src="' + (graphURL + this.likes.data[l].id + '/picture?type=' + options.avatar_size) + '" alt="' + this.likes.data[l].name + '" /></a></div>';
-											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a> synes godt om</div>';
+											output += '<div class="author"><a href="http://www.facebook.com/profile.php?id=' + this.likes.data[l].id + '" target="_blank" title="' + this.likes.data[l].name + '">' + this.likes.data[l].name + '</a>' + options.text_labels.likes.singular.replace('%', '') + '</div>';
 										output += '</div>';
 									output += '</li>';
 								}
