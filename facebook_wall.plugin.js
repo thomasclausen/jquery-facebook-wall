@@ -12,7 +12,6 @@
 			speed: 400,
 			effect: 'slide', // slide | fade | none
 			locale: 'da_DK', // your contry code
-			date_format: 'U',
 			avatar_size: 'square', // square | small | normal | large
 			message_length: 200, // Any amount you like. Above 0 shortens the message length
 			show_guest_entries: true, // true | false
@@ -31,14 +30,16 @@
 				},
 				like: 'Synes godt om',
 				comment: 'Skriv kommentar',
-				share: 'Del'
+				share: 'Del',
+                days: ['S&oslash;ndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'L&oslash;rdag'],
+                months: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december']
 			},
 			on_complete: null
 		}, options);
 	
 		var graphURL = 'https://graph.facebook.com/',
 			graphTYPE = (options.show_guest_entries === false) ? 'posts' : 'feed',
-			graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=' + options.date_format + '&callback=?',
+			graphPOSTS = graphURL + options.id + '/' + graphTYPE + '/?access_token=' + options.access_token + '&limit=' + options.limit + '&locale=' + options.locale + '&date_format=U&callback=?',
 			e = $(this);
 		
 		e.append('<div class="facebook-loading"></div>');
@@ -50,7 +51,7 @@
 					media_class = '',
 					split_id = '';
 
-				if (this.is_hidden === null || this.is_hidden === undefined) {
+				if (this.is_hidden === undefined) {
 					if (this.type === 'link') {
 						post_class = 'type-link ';
 					} else if (this.type === 'photo') {
@@ -67,13 +68,13 @@
 							output += '<div class="date">' + timeToHuman(this.created_time) + '</div>';
 						output += '</div>';
 						
-						if (this.message != null || this.message != undefined) {
+						if (this.message !== undefined) {
 							if (options.message_length > 0 && this.message.length > options.message_length) {
 								output += '<div class="message">' + modText(this.message.substring(0, options.message_length)) + '...</div>';
 							} else {
 								output += '<div class="message">' + modText(this.message) + '</div>';
 							}
-						} else if (this.story != null || this.story != undefined) {
+						} else if (this.story !== undefined) {
 							if (options.message_length > 0 && this.story.length > options.message_length) {
 								output += '<div class="story">' + modText(this.story.substring(0, options.message_length)) + '...</div>';
 							} else {
@@ -82,25 +83,25 @@
 						}
 						
 						if (this.type === 'link' || this.type === 'photo' || this.type === 'video') {
-							if ((this.picture != null || this.picture != undefined) || (this.object_id != null || this.object_id != undefined)) {
+							if (this.picture !== undefined || this.object_id !== undefined) {
 								media_class = ' border-left';
 							} else {
 								media_class = '';
 							}
 							output += '<div class="media' + media_class + ' clearfix">';
-								if (this.picture != null || this.picture != undefined) {
+								if (this.picture !== undefined) {
 									output += '<div class="image"><a href="' + this.link + '" target="_blank"><img src="' + this.picture + '" /></a></div>';
-								} else if (this.object_id != null || this.object_id != undefined) {
+								} else if (this.object_id !== undefined) {
 									output += '<div class="image"><a href="' + this.link + '" target="_blank"><img src="' + (graphURL + this.object_id + '/picture?type=album') + '" /></a></div>';
 								}
 								output += '<div class="media-meta">';
-									if (this.name != null || this.name != undefined) {
+									if (this.name !== undefined) {
 										output += '<div class="name"><a href="' + this.link + '" target="_blank">' + this.name + '</a></div>';
 									}
-									if (this.caption != null || this.caption != undefined) {
+									if (this.caption !== undefined) {
 										output += '<div class="caption">' + modText(this.caption) + '</div>';
 									}
-									if (this.description != null || this.description != undefined) {
+									if (this.description !== undefined) {
 										output += '<div class="description">' + modText(this.description) + '</div>';
 									}
 								output += '</div>';
@@ -109,8 +110,8 @@
 						
 						output += '<div class="meta-footer">';
 							output += '<time class="date" datetime="' + this.created_time + '" pubdate>' + timeToHuman(this.created_time) + '</time>';
-							if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
-								if (this.likes.count != null || this.likes.count != undefined) {
+							if (this.likes !== undefined && this.likes.data !== undefined) {
+								if (this.likes.count !== undefined) {
 									if (this.likes.count === 1) {
 										output += '<span class="seperator">&middot;</span><span class="likes">' + options.text_labels.likes.singular.replace('%', this.likes.count) + '</span>';
 									} else {
@@ -124,14 +125,14 @@
 									}
 								}
 							}
-							if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
+							if (this.comments !== undefined && this.comments.data !== undefined) {
 								if (this.comments.data.length === 1) {
 									output += '<span class="seperator">&middot;</span><span class="comments">' + options.text_labels.comments.singular.replace('%', this.comments.data.length) + '</span>';
 								} else {
 									output += '<span class="seperator">&middot;</span><span class="comments">' + options.text_labels.comments.plural.replace('%', this.comments.data.length) + '</span>';
 								}
 							}
-							if (this.shares != null || this.shares != undefined) {
+							if (this.shares !== undefined) {
 								if (this.shares.count === 1) {
 									output += '<span class="seperator">&middot;</span><span class="shares">' + options.text_labels.shares.singular.replace('%', this.shares.count) + '</span>';
 								} else {
@@ -144,7 +145,7 @@
 							output += '<div class="actionlinks"><span class="like"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">' + options.text_labels.like + '</a></span><span class="seperator">&middot;</span><span class="comment"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">' + options.text_labels.comment + '</a></span><span class="seperator">&middot;</span><span class="share"><a href="http://www.facebook.com/permalink.php?story_fbid=' + split_id[1] + '&id=' + split_id[0] + '" target="_blank">' + options.text_labels.share + '</a></span></div>';
 						output += '</div>';
 						
-						if ((this.likes != null || this.likes != undefined) && this.likes.data != undefined) {
+						if (this.likes !== undefined && this.likes.data !== undefined) {
 							output += '<ul class="like-list">';
 								for (var l = 0; l < this.likes.data.length; l++) {
 									output += '<li class="like">';
@@ -156,7 +157,7 @@
 								}
 							output += '</ul>';
 						}
-						if ((this.comments != null || this.comments != undefined) && this.comments.data != undefined) {
+						if (this.comments !== undefined && this.comments.data !== undefined) {
 							output += '<ul class="comment-list">';
 								for (var c = 0; c < this.comments.data.length; c++) {
 									output += '<li class="comment">';
@@ -209,10 +210,9 @@
 			return str.replace(/</g, '&lt;').replace(/>/g, '&gt;');
 		}
 		function timeToHuman(time) {
-			var timestamp = new Date(time*1000);
-			dateString = timestamp.toGMTString();
-	
-			var time_difference = Math.round(new Date().getTime()/1000)-time;
+			var timestamp = new Date(time*1000),
+                dateString = timestamp.toGMTString(),
+                time_difference = Math.round(new Date().getTime()/1000)-time;
 			
 			if (time_difference < 10) {
 				return 'F&aring; sekunder siden';
@@ -231,14 +231,7 @@
 			} else if (Math.round(time_difference/(60*60*24)) <= 10) {
 				return Math.round(time_difference/(60*60*24)) + ' dage siden';
 			} else {
-				var days = new Array('S&oslash;ndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'L&oslash;rdag');
-				var months = new Array('januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december');
-	
-				var day = timestamp.getDay();
-				var day_no = timestamp.getDate();
-				var month = timestamp.getMonth();
-				var year = timestamp.getFullYear();
-				return days[day] + ' d. ' + day_no + '. ' + months[month] + ' ' + year;
+				return options.text_labels.days[timestamp.getDay()] + ' d. ' + timestamp.getDate() + '. ' + options.text_labels.months[timestamp.getMonth()] + ' ' + timestamp.getFullYear();
 			}
 		}
 	};
