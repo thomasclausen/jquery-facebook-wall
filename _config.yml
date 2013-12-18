@@ -1,4 +1,9 @@
-baseurl: /jquery-facebook-wall
-markdown: rdiscount
-pygments: true
-permalink: /:title
+# Dependencies
+markdown:         rdiscount
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Server
+destination:      ./_gh_pages
