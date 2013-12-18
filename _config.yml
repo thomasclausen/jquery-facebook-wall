@@ -1,3 +1,4 @@
+baseurl: /jquery-facebook-wall
 markdown: rdiscount
 pygments: true
 permalink: /:title
