@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="da-DK">
+    
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% if page.meta_title %}
+<title>{{ page.meta_title }}</title>
+{% else %}
+<title>Display your Facebook wall</title>
+{% endif %}
+
+{% if page.meta_description %}
+<meta name="description" content="{{ page.meta_description }}" />
+{% endif %}
+
+<link rel="stylesheet" href="{{ site.url }}/assets/css/normalize.css" />
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" />
+<link rel="stylesheet" href="{{ site.url }}/assets/css/main.css" />
+
+<!--[if lt IE 9]>
+<script src="{{ site.url }}/assets/js/html5shiv.js"></script>
+<![endif]-->
+</head>
+    
+<body>
+<section>
+    <aside class="sidebar">
+        <header role="contentinfo">
+            <p>This Facebook wall jQuery pluin enables you to display your profile og pages updates directly on your website.</p>
+        </header>
+        <nav role="navigation">
+            <ul class="mainmenu">
+                <li class="current"><a href="{{ site.url }}/">Options</a></li>
+                <li><a href="{{ site.url }}/example">Example</a></li>
+                <li><a href="{{ site.url }}/live">Live</a></li>
+                <li><a href="https://github.com/thomasclausen/jquery-facebook-wall" taget="_blank">GitHub Repository</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <article id="main" role="main">
+        {{ content }}
+    </article>
+</section>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{{ site.url }}/assets/js/facebook_wall.plugin.js"></script>
+<script src="{{ site.url }}/assets/js/main.js"></script>
+</body>
+
+</html>
