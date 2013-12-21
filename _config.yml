@@ -1,18 +1,4 @@
-baseurl: /jquery-facebook-wall
-
-# Dependencies
-markdown:         rdiscount
-pygments:         true
-
-# Permalinks
-permalink:        pretty
-
-# Server
-destination:      ./_gh_pages
-
-
-port: 4000
-auto: true
-safe: true
-server: true
+name: Facebook Wall
+markdown: redcarpet
 pygments: true
+baseurl: /jquery-facebook-wall
