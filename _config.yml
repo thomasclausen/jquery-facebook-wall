@@ -1,3 +1,5 @@
+baseurl: /jquery-facebook-wall
+
 # Dependencies
 markdown:         rdiscount
 pygments:         true
@@ -7,3 +9,10 @@ permalink:        pretty
 
 # Server
 destination:      ./_gh_pages
+
+
+port: 4000
+auto: true
+safe: true
+server: true
+pygments: true
