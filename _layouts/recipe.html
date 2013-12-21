@@ -1,0 +1,27 @@
+{% include head.html %}
+    
+    
+
+    
+
+    	<main role="main">
+        
+        	<h1>{{ page.title }}</h1>
+        	
+        	<div class="img-wrapper">
+        		<img src="{{ page.image }}" />
+        	</div>
+        	
+        	{{ content }}
+        	
+        	<p class="attribution">Recipe by <a href="{{ page.recipe-attribution-link }}">{{ page.recipe-attribution }}</a>. Photo by <a href="{{ page.image-attribution-link }}">{{ page.image-attribution }}</a>.</p>
+    	
+    	</main>
+    	
+    	{% include nav.html %}
+	
+	
+	
+	
+
+{% include foot.html %}
