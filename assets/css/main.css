@@ -247,7 +247,7 @@ ul.mainmenu li a:hover {
     background: #4e4a4a;
 }
 
-ul.facebook_wall {
+ul.facebook-wall {
     list-style: none;
     padding-left: 0;
 }
@@ -490,3 +490,61 @@ ul.facebook_wall {
 .facebook-wall.alt2 li ul.comment-list li.comment .date { font-size: 9px; line-height: 16px; color: #a1a1a1; }
 .facebook-wall.alt2 li ul.comment-list li.read_more { min-height: 1px; font-size: 9px; line-height: 16px; color: #a1a1a1; padding: 0 10px 0 72px; border-top: none; margin: 5px 0 -5px 0; display: block; }
 .facebook-wall.alt2 li ul.comment-list li.read_more a { color: #a1a1a1; }
+
+
+/* ==========================================================================
+   7. Alternate styling #3
+   ========================================================================== */
+
+.facebook-wall.alt3 { min-height: 200px; margin: 0 -40px; position: relative; }
+
+.facebook-wall.alt3 .facebook-loading { width: 16px; height: 16px; background: url('images/loader.png') no-repeat 50% 50%; margin-top: -8px; margin-left: -8px; position: absolute; top: 100px; left: 50%; }
+.facebook-wall.alt3 .facebook-loading { -moz-animation: update-spinner 1s linear infinite; -webkit-animation: update-spinner 1s linear infinite; -ms-animation: update-spinner 1s linear infinite; animation: update-spinner 1s linear infinite; }
+
+.facebook-wall.alt3 li { padding: 10px; background: #eee; margin-bottom: 10px; display: none; position: relative; }
+.facebook-wall.alt3 li:first-child { border-top: none; }
+
+.facebook-wall.alt3 li .meta-header { display: inline; }
+.facebook-wall.alt3 li .meta-header .avatar { width: 50px; height: 50px; border: 1px solid #999; margin-right: 10px; margin-bottom: 10px; float: left; }
+.facebook-wall.alt3 li .meta-header .author { width: 478px; font-weight: bold; float: left; }
+.facebook-wall.alt3 li .meta-header .date { width: 478px; float: left; display: none; }
+
+.facebook-wall.alt3 li .message { width: 478px; color: #808080; margin-bottom: 10px; float: left; }
+.facebook-wall.alt3 li .story { width: 478px; font-style: italic; color: #808080; margin-bottom: 10px; float: left; }
+.facebook-wall.alt3 li .message a,
+.facebook-wall.alt3 li .story a { color: #808080; text-decoration: underline; }
+
+.facebook-wall.alt3 li .media { color: #8a8a8a; padding-top: 10px; padding-bottom: 10px; border-top: 1px solid #a1a1a1; border-bottom: 1px solid #a1a1a1; margin-top: 10px; margin-bottom: 10px; clear: both; }
+.facebook-wall.alt3 li .media.border-left { padding-left: 10px; border-left: 2px solid #a1a1a1; }
+.facebook-wall.alt3 li .media img { max-width: 50%; height: auto; padding: 2px; border: 1px solid #a1a1a1; margin-right: 10px; float: left; }
+.facebook-wall.alt3 li .media .media-meta { max-width: 50%; float: left; }
+.facebook-wall.alt3 li .media .media-meta .name { font-weight: bold; }
+.facebook-wall.alt3 li .media .media-meta .caption { font-style: italic; }
+.facebook-wall.alt3 li .media .media-meta .description { }
+
+.facebook-wall.alt3 li .meta-footer { font-size: 9px; line-height: 16px; color: #a1a1a1; padding: 5px; background: #e0e0e0; clear: both; }
+.facebook-wall.alt3 li .meta-footer .seperator { padding: 0 4px; }
+.facebook-wall.alt3 li .meta-footer .date { }
+.facebook-wall.alt3 li .meta-footer .likes { }
+.facebook-wall.alt3 li .meta-footer .comments { }
+.facebook-wall.alt3 li .meta-footer .share { }
+.facebook-wall.alt3 li .meta-footer .actions { }
+.facebook-wall.alt3 li .meta-footer .actions .like { }
+.facebook-wall.alt3 li .meta-footer .actions .comment { }
+.facebook-wall.alt3 li .meta-footer .actions .share { }
+
+.facebook-wall.alt3 li ul.like-list { margin-top: 10px; display: none; }
+.facebook-wall.alt3 li ul.like-list li.like { font-size: 11px; line-height: 16px; background: #e0e0e0; border-top: none; margin-top: 2px; display: block; }
+.facebook-wall.alt3 li ul.like-list li.like:first-child { margin-top: 0; }
+.facebook-wall.alt3 li ul.like-list li.like .meta-header .author { }
+
+.facebook-wall.alt3 li ul.comment-list { margin-top: 10px; }
+.facebook-wall.alt3 li ul.comment-list li.comment { min-height: 50px; font-size: 11px; line-height: 16px; padding: 10px 10px 10px 70px; border-top: none; background: #e0e0e0; margin-top: 2px; margin-bottom: 0; display: block; }
+.facebook-wall.alt3 li ul.comment-list li.comment:first-child { margin-top: 0; }
+.facebook-wall.alt3 li ul.comment-list li.comment .meta-header .avatar { position: absolute; top: 10px; left: 10px; }
+.facebook-wall.alt3 li ul.comment-list li.comment .meta-header .author { width: auto; float: none; }
+.facebook-wall.alt3 li ul.comment-list li.comment .meta-header .date { width: auto; float: none; }
+.facebook-wall.alt3 li ul.comment-list li.comment .message { width: auto; margin-bottom: 0; float: none; }
+.facebook-wall.alt3 li ul.comment-list li.comment .date { font-size: 9px; line-height: 16px; color: #a1a1a1; }
+.facebook-wall.alt3 li ul.comment-list li.read_more { min-height: 1px; font-size: 9px; line-height: 16px; color: #a1a1a1; padding: 0 10px 0 72px; border-top: none; margin: 5px 0 -5px 0; display: block; }
+.facebook-wall.alt3 li ul.comment-list li.read_more a { color: #a1a1a1; }
