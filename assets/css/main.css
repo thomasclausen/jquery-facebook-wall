@@ -210,50 +210,69 @@ pre code, tt {
    ========================================================================== */
 
 section {
-    width: 750px;
-    background: #fcfcfc;
-    margin-right: auto;
-    margin-left: auto;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
 }
-header {
+section:before {
+    width: 300px;
+    height: 100%;
+    background: #343131;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    content: ' ';
+}
+section:after {
+    width: 800px;
+    height: 100%;
+    background: #fcfcfc;
+    position: fixed;
+    top: 0;
+    left: 300px;
+    z-index: 1;
+    content: ' ';
+}
+aside {
+    width: 300px;
+    color: #b3b3b3;
     padding: 12px 24px;
+    float: left;
+    position: relative;
+    z-index: 2;
 }
 article {
+    width: 800px;
     padding: 26px 52px;
-}
-footer {
-    padding: 12px 24px;
+    float: left;
+    position: relative;
+    z-index: 2;
 }
 
 
 /* ==========================================================================
-   3. Utilities - These things get used a lot
+   3. Navigation - Get the navigation looking right
    ========================================================================== */
 
-.container {
-    width: 750px;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
+ul.mainmenu {
+    list-style: none;
+    padding-left: 0;
 }
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
+ul.mainmenu li {
 }
-.clearfix:before,
-.clearfix:after,
-.container:before,
-.container:after,
-.row:before,
-.row:after {
-  display: table;
-  content: " ";
+ul.mainmenu li a {
+    color: #b3b3b3;
+    text-decoration: none;
+    padding: 4px 24px;
+    display: block;
 }
-.clearfix:after,
-.container:after,
-.row:after {
-  clear: both;
+ul.mainmenu li a:hover,
+ul.mainmenu li.current a {
+    background: #4e4a4a;
 }
 
 

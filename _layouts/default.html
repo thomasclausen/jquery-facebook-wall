@@ -15,9 +15,9 @@
 <meta name="description" content="{{ page.meta_description }}" />
 {% endif %}
 
-<link rel="stylesheet" href="../assets/css/normalize.css" />
-<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Roboto+Slab:400,700" rel="stylesheet" />
-<link rel="stylesheet" href="../assets/css/main.css" />
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/normalize.css" />
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700" rel="stylesheet" />
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css" />
 
 <!--[if lt IE 9]>
 <script src="{{ site.baseurl }}/assets/js/html5shiv.js"></script>
@@ -26,15 +26,10 @@
     
 <body>
 <section>
-    <header>
-        <h1>Facebook wall jQuery plugin</h1>
-        <p>This plugin let's you display your facebook profile og facebook page updates directly on your website.</p>
-    </header>
-    <hr />
-    {{ content }}
-    <hr />
-    <footer>
-        <h2>Footer</h2>
+    <aside class="sidebar">
+        <header role="contentinfo">
+            <p>This Facebook wall jQuery pluin enables you to display your profile og pages updates directly on your website.</p>
+        </header>
         <nav role="navigation">
             <ul class="mainmenu">
                 <li class="current"><a href="{{ site.url }}/">Options</a></li>
@@ -43,13 +38,16 @@
                 <li><a href="https://github.com/thomasclausen/jquery-facebook-wall" taget="_blank">GitHub Repository</a></li>
             </ul>
         </nav>
+    </aside>
     
-    </footer>
+    <article id="main" role="main">
+        {{ content }}
+    </article>
 </section>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="../assets/js/facebook_wall.plugin.js"></script>
-<script src="../assets/js/main.js"></script>
+<script src="{{ site.baseurl }}/assets/js/facebook_wall.plugin.js"></script>
+<script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>
 
 </html>
