@@ -239,6 +239,7 @@ section:after {
 }
 aside {
     width: 300px;
+    font-size: 0.875em;
     color: #b3b3b3;
     padding: 12px 24px;
     float: left;
