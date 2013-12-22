@@ -2,8 +2,8 @@
    Table of content
    ==========================================================================
 
-    1.  Icons
-    2.  General
+    1.  General
+    2.  
     3.  Utilities
     4.  General
     5.  Single Post
@@ -16,97 +16,85 @@
 */
 
 /* ==========================================================================
-   1. Icons - Sets up the icon font and respective classes
-   ========================================================================== */
-
-/* Import the font file with the icons in it */
-@font-face {
-    font-family: 'icons';
-    src:url('../fonts/icons.eot');
-    src:url('../fonts/icons.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/icons.woff') format('woff'),
-        url('../fonts/icons.ttf') format('truetype'),
-        url('../fonts/icons.svg#icons') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-/* Apply these base styles to all icons */
-.icon-ghost:before, 
-.icon-feed:before, 
-.icon-twitter:before, 
-.icon-google-plus:before, 
-.icon-facebook:before {
-    font-family: 'icons';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    text-decoration: none;
-}
-
-/* Each icon is created by inserting the corret character into the 
-   content of the :before pseudo element. Like a boss. */
-.icon-ghost:before {
-    content: "\e000";
-}
-.icon-feed:before {
-    content: "\e001";
-}
-.icon-twitter:before {
-    content: "\e002";
-    font-size: 1.1em;
-}
-.icon-google-plus:before {
-    content: "\e003";
-}
-.icon-facebook:before {
-    content: "\e004";
-}
-
-
-/* ==========================================================================
-   2. General - Setting up some base styles
+   1. General - Setting up some base styles
    ========================================================================== */
 
 *,
 *:before,
-*:after{
+*:after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 html {
-    height: 100%;
-    max-height: 100%;
     font-size: 62.5%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #333;
+    background-color: #fff;
+}
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #2a6496;
+    text-decoration: underline;
+}
+a:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+img {
+    vertical-align: middle;
+}
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
 body {
     height: 100%;
     max-height: 100%;
-    font-family: 'Noto Serif', serif;
-    font-size: 2.0rem;
+    font-family: 'Open Sans', serif;
+    font-size: 1.6rem;
     line-height: 1.6em;
     color: #3A4145;
     background: #edf0f2;
 }
 
+h1, h2, h3, h4, h5, h6, legend {
+    margin-top: 0;
+    font-weight: 700;
+    font-family: 'Roboto Slab', 'Georgia', serif;
+}
 h1, h2, h3,
 h4, h5, h6 {
     text-rendering: optimizeLegibility;
     line-height: 1;
     margin-top: 0;
-    font-family: 'Open Sans', sans-serif;
 }
 
 h1 {
     font-size: 5rem;
+    font-size: 175%;
     line-height: 1.2em;
-    letter-spacing: -2px;
-    text-indent: -3px;
 }
 
 h2 {
@@ -182,38 +170,6 @@ hr {
     padding: 0;
 }
 
-blockquote {
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 1.6em 0 1.6em -2.2em;
-    padding: 0 0 0 1.6em;
-    border-left: #4a4a4a 0.4em solid;
-}
-
-blockquote p {
-    margin: 0.8em 0;
-    font-style: italic;
-}
-
-blockquote small {
-    display: inline-block;
-    margin: 0.8em 0 0.8em 1.5em;
-    font-size:0.9em;
-    color: #ccc;
-}
-
-blockquote small:before { content: '\2014 \00A0'; }
-
-blockquote cite {
-    font-weight:bold;
-}
-
-blockquote cite a { font-weight: normal; }
-
-mark {
-    background-color: #ffc336;
-}
-
 code, tt {
     padding: 1px 3px;
     font-family: Inconsolata, monospace, sans-serif;
@@ -248,31 +204,25 @@ pre code, tt {
     padding: 0;
 }
 
-kbd {
-    display: inline-block;
-    margin-bottom: 0.4em;
-    padding: 1px 8px;
-    border: #ccc 1px solid;
-    color: #666;
-    text-shadow: #fff 0 1px 0;
-    font-size: 0.9em;
-    font-weight: bold;
-    background: #f4f4f4;
-    border-radius: 4px;
-    box-shadow: 
-        0 1px 0 rgba(0, 0, 0, 0.2), 
-        0 1px 0 0 #fff inset;
-}
 
-iframe, .fluid-width-video-wrapper {
-    display: block;
-    margin: 1.6em 0;
-}
+/* ==========================================================================
+   2. Layout - Setting up the layout styles
+   ========================================================================== */
 
-/* When a video is inside the fitvids wrapper, drop the
-margin on the iframe, cause it breaks stuff. */
-.fluid-width-video-wrapper iframe {
-    margin: 0;
+section {
+    width: 750px;
+    background: #fcfcfc;
+    margin-right: auto;
+    margin-left: auto;
+}
+header {
+    padding: 12px 24px;
+}
+article {
+    padding: 26px 52px;
+}
+footer {
+    padding: 12px 24px;
 }
 
 
@@ -280,25 +230,30 @@ margin on the iframe, cause it breaks stuff. */
    3. Utilities - These things get used a lot
    ========================================================================== */
 
-/* Hides shit */
-.hidden {
-    text-indent: -9999px;
-    visibility: hidden;
-    display: none;
+.container {
+    width: 750px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
-
-/* Creates a responsive wrapper that makes our content scale nicely */
-.inner {
-    position: relative;
-    width: 80%;
-    max-width: 700px;
-    margin: 0 auto;
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
 }
-
-/* Centres vertically yo. (IE8+) */
-.vertical {
-    display: table-cell;
-    vertical-align: middle;
+.clearfix:before,
+.clearfix:after,
+.container:before,
+.container:after,
+.row:before,
+.row:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after,
+.container:after,
+.row:after {
+  clear: both;
 }
 
 
@@ -306,32 +261,7 @@ margin on the iframe, cause it breaks stuff. */
    4. General - The main styles for the the theme
    ========================================================================== */
 
-section {
-    width: 100%;
-    max-width: 1000px;
-    height: 100%;
-    background: #edf0f2;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: auto;
-}
-aside {
-    width: 300px;
-    height: 100%;
-    color: #fff;
-    background: #272525;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
 
-article {
-    max-width: 800px;
-    padding: 26px 52px;
-    background: rgba(0, 0, 0, 0.05);
-    margin-left: 300px;
-}
 
 #update-icon {
     width: 34px;
