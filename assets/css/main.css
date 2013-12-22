@@ -31,27 +31,53 @@ html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.428571429;
-    color: #333;
-    background-color: #fff;
+    font-family: 'Open Sans', serif;
+    font-size: 1.6rem;
+    line-height: 1.6em;
+    color: #3a4145;
+    background: #edf0f2;
 }
-input,
-button,
-select,
-textarea {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    font-weight: 700;
+    font-family: 'Neuton', serif;
+}
+h1 {
+    font-size: 5rem;
+    font-size: 175%;
+    line-height: 1.2em;
+}
+h2 {
+    font-size: 4rem;
+    line-height: 1.2em;
+    letter-spacing: -1px;
+    text-indent: -2px;
+}
+h3 {
+    font-size: 3.5rem;
+}
+h4 {
+    font-size: 3rem;
+}
+h5 {
+    font-size: 2.5rem;
+}
+h6 {
+    font-size: 2rem;
 }
 a {
-    color: #428bca;
+    color: #2980b9;
     text-decoration: none;
+    transition: color ease 0.3s;
 }
 a:hover,
 a:focus {
-    color: #2a6496;
+    color: #3091d1;
     text-decoration: underline;
 }
 a:focus {
@@ -63,75 +89,24 @@ img {
     vertical-align: middle;
 }
 hr {
+    height: 1px;
+    padding: 0;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid #efefef;
+    display: block;
 }
 
-body {
-    height: 100%;
-    max-height: 100%;
-    font-family: 'Open Sans', serif;
-    font-size: 1.6rem;
-    line-height: 1.6em;
-    color: #3A4145;
-    background: #edf0f2;
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
 }
 
-h1, h2, h3, h4, h5, h6, legend {
-    margin-top: 0;
-    font-weight: 700;
-    font-family: 'Roboto Slab', 'Georgia', serif;
-}
-h1, h2, h3,
-h4, h5, h6 {
-    text-rendering: optimizeLegibility;
-    line-height: 1;
-}
-
-h1 {
-    font-size: 5rem;
-    font-size: 175%;
-    line-height: 1.2em;
-}
-
-h2 {
-    font-size: 4rem;
-    line-height: 1.2em;
-    letter-spacing: -1px;
-    text-indent: -2px;
-}
-
-h3 {
-    font-size: 3.5rem;
-}
-
-h4 {
-    font-size: 3rem;
-}
-
-h5 {
-    font-size: 2.5rem;
-}
-
-h6 {
-    font-size: 2rem;
-}
-
-a {
-    color: #4a4a4a;
-    transition: color ease 0.3s;
-}
-
-a:hover {
-    color: #57A3E8;
-}
-
-h1 a, h2 a, h3 a,
-h4 a, h5 a, h6 a {
-    color: #50585D;
-}
 
 
 p, ul, ol, dl {
@@ -160,14 +135,6 @@ dl dd {
     margin-bottom: 1em
 }
 
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #efefef;
-    margin: 3.2em 0;
-    padding: 0;
-}
 
 code, tt {
     padding: 1px 3px;
@@ -272,8 +239,11 @@ ul.mainmenu li a {
     padding: 4px 24px;
     display: block;
 }
-ul.mainmenu li a:hover,
 ul.mainmenu li.current a {
+    color: #808080;
+    background: #e3e3e3;
+}
+ul.mainmenu li a:hover {
     background: #4e4a4a;
 }
 
