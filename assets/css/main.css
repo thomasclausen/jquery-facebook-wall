@@ -88,7 +88,6 @@ h1, h2, h3,
 h4, h5, h6 {
     text-rendering: optimizeLegibility;
     line-height: 1;
-    margin-top: 0;
 }
 
 h1 {
@@ -241,10 +240,12 @@ aside {
     width: 300px;
     font-size: 0.875em;
     color: #b3b3b3;
-    padding: 12px 24px;
     float: left;
     position: relative;
     z-index: 2;
+}
+aside header {
+    padding: 12px 24px;
 }
 article {
     width: 800px;
