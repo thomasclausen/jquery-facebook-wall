@@ -51,7 +51,7 @@
 					media_class = '',
 					split_id = '';
 
-				if (this.is_hidden === undefined) {
+				if (this.is_hidden === false) {
 					if (this.type === 'link') {
 						post_class = 'type-link ';
 					} else if (this.type === 'photo') {
