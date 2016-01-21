@@ -31,8 +31,24 @@
 				like: 'Synes godt om',
 				comment: 'Skriv kommentar',
 				share: 'Del',
-                days: ['S&oslash;ndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'L&oslash;rdag'],
-                months: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december']
+                weekdays: ['S&oslash;ndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'L&oslash;rdag'],
+                months: ['januar', 'februar', 'marts', 'april', 'maj', 'juni', 'juli', 'august', 'september', 'oktober', 'november', 'december'],
+				seconds: {
+					few: 'F&aring; sekunder siden',
+					plural: ' sekunder siden'
+				},
+				minutes: {
+					singular: ' minut siden',
+					plural: ' minutter siden'
+				},
+				hours: {
+					singular: ' time siden',
+					plural: ' timer siden'
+				},
+				days: {
+					singular: ' dag siden',
+					plural: ' dage siden'
+				}
 			},
 			on_complete: null
 		}, options);
@@ -215,23 +231,23 @@
                 time_difference = Math.round(new Date().getTime()/1000)-time;
 			
 			if (time_difference < 10) {
-				return 'F&aring; sekunder siden';
+				return options.text_labels.seconds.few;
 			} else if (time_difference < 60) {
-				return Math.round(time_difference) + ' sekunder siden';
+				return Math.round(time_difference) + options.text_labels.seconds.plural;
 			} else if (Math.round(time_difference/60) === 1) {
-				return Math.round(time_difference/60) + ' minut siden';
+				return Math.round(time_difference/60) + options.text_labels.minutes.singular;
 			} else if (Math.round(time_difference/60) < 60) {
-				return Math.round(time_difference/60) + ' minutter siden';
+				return Math.round(time_difference/60) + options.text_labels.minutes.plural;
 			} else if (Math.round(time_difference/(60*60)) === 1) {
-				return Math.round(time_difference/(60*60)) + ' time siden';
+				return Math.round(time_difference/(60*60)) + options.text_labels.hours.singular;
 			} else if (Math.round(time_difference/(60*60)) < 24) {
-				return Math.round(time_difference/(60*60)) + ' timer siden';
+				return Math.round(time_difference/(60*60)) + options.text_labels.hours.plural;
 			} else if (Math.round(time_difference/(60*60*24)) === 1) {
-				return Math.round(time_difference/(60*60*24)) + ' dag siden';
+				return Math.round(time_difference/(60*60*24)) + options.text_labels.days.singular;
 			} else if (Math.round(time_difference/(60*60*24)) <= 10) {
-				return Math.round(time_difference/(60*60*24)) + ' dage siden';
+				return Math.round(time_difference/(60*60*24)) + options.text_labels.days.plural;
 			} else {
-				return options.text_labels.days[timestamp.getDay()] + ' d. ' + timestamp.getDate() + '. ' + options.text_labels.months[timestamp.getMonth()] + ' ' + timestamp.getFullYear();
+				return options.text_labels.weekdays[timestamp.getDay()] + ' d. ' + timestamp.getDate() + '. ' + options.text_labels.months[timestamp.getMonth()] + ' ' + timestamp.getFullYear();
 			}
 		}
 	};
